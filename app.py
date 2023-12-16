@@ -10,6 +10,13 @@ from langchain.chains import RetrievalQA
 from constants import CHROMA_SETTINGS
 
 checkpoint = "LaMini-T5-738M"
+# tokenizer = AutoTokenizer.from_pretrained("MBZUAI/LaMini-T5-738M")
+# base_model = AutoModelForSeq2SeqLM.from_pretrained(
+#     "MBZUAI/LaMini-T5-738M",
+#     torch_dtype=torch.float32,
+#     device_map='auto'
+# ) 
+
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 base_model = AutoModelForSeq2SeqLM.from_pretrained(
     checkpoint,
@@ -19,7 +26,7 @@ base_model = AutoModelForSeq2SeqLM.from_pretrained(
 
 def llm_pipeline():
     pipe = pipeline(
-        'text2text_generation',
+        'text2text-generation',
         model=base_model,
         tokenizer=tokenizer,
         max_length=512,
@@ -37,7 +44,7 @@ def qa_llm():
     embeddings=SentenceTransformerEmbeddings(model_name='all-MiniLM-L6-v2')
     db=Chroma(embedding_function=embeddings, persist_directory='db', client_settings=CHROMA_SETTINGS)
     retriever=db.as_retriever()
-    qa=RetrievalQA(
+    qa=RetrievalQA.from_chain_type(
         llm=llm,
         chain_type='stuff',
         retriever=retriever,
