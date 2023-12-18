@@ -7,6 +7,7 @@ from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.llms import HuggingFacePipeline
 from langchain.chains import RetrievalQA
+from io import StringIO
 from constants import CHROMA_SETTINGS
 
 checkpoint = "LaMini-T5-738M"
@@ -70,7 +71,8 @@ def main():
     question='what is this paper about?'
     response, metadata = process_answer(question)
     print(response)
-    response=str(response)
-    return response
+    llmStream = StringIO(response)
+    data = llmStream.read().decode()
+    return data
 if __name__ == '__main__':
     main()
