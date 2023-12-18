@@ -70,6 +70,7 @@ def main():
     question='what is this paper about?'
     response, metadata = process_answer(question)
     print(response)
+    response=str(response)
     return response
 if __name__ == '__main__':
     main()
