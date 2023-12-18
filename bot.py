@@ -8,6 +8,7 @@ from langchain.vectorstores import Chroma
 from langchain.llms import HuggingFacePipeline
 from langchain.chains import RetrievalQA
 from io import StringIO
+import json
 from constants import CHROMA_SETTINGS
 
 checkpoint = "LaMini-T5-738M"
@@ -61,18 +62,22 @@ def process_answer(instruction):
     answer=generated_text['result']
     return answer, generated_text
 
-def chat():
-    question='what is this paper about?'
-    response, metadata = process_answer(question)
+def chat(query):
+    question=query
+    response, metadata =  process_answer(question)
     print(response)
-    return response
+    ram={'res':response}
+    z= json.dumps(ram)
+     # llmStream = StringIO(response)
+    # data = llmStream.read().decode()
+
+    return z
 
 def main():
     question='what is this paper about?'
     response, metadata = process_answer(question)
     print(response)
-    llmStream = StringIO(response)
-    data = llmStream.read().decode()
-    return data
+
+
 if __name__ == '__main__':
     main()

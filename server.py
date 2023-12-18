@@ -1,7 +1,18 @@
 from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
+from fastapi import FastAPI ,Request
 from bot import chat
+from pydantic import BaseModel
+import json
+from fastapi.encoders import jsonable_encoder
+
+class Item(BaseModel):
+    query: str
+    # description: str | None = None
+    # price: float
+    # tax: float | None = None
+
+
 app = FastAPI()
 
 app.add_middleware(
@@ -15,8 +26,10 @@ app.add_middleware(
 
 
 @app.post("/")
-def read_root():
-    response =chat()
+def read_root(query:Item):
+    
+    response =chat(query.query)
+
     return response
 
 
