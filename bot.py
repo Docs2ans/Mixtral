@@ -60,10 +60,16 @@ def process_answer(instruction):
     answer=generated_text['result']
     return answer, generated_text
 
-def main():
-    question=input()
+def chat():
+    question='what is this paper about?'
     response, metadata = process_answer(question)
     print(response)
+    return response
 
+def main():
+    question='what is this paper about?'
+    response, metadata = process_answer(question)
+    print(response)
+    return response
 if __name__ == '__main__':
     main()
