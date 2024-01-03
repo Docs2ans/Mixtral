@@ -34,12 +34,13 @@ System needs to have Python 3.10 installed.
 2. The project uses LaMini-T5-738M as the LLM engine, the folder in the repo contains all tokenizer and config files. However, the pytorch_model.bin file for the mentioned model has to be downloaded seperately from Huggingface. Download the file [here](https://huggingface.co/MBZUAI/LaMini-T5-738M/tree/main) and move it into the LaMini-738M folder.
 3. Install the required libraries using pip.
    `pip install -r requirements.txt`
-4. Add your documentation pdf files to the 'docs' folder.
-5. Run ingest.py
+4. Create 2 empty directories 'db' and 'docs'.
+5. Add your documentation pdf files to the 'docs' folder.
+6. Run ingest.py
    `python ingest.py`
-6. Open a terminal and run the following command
+7. Open a terminal and run the following command
    `uvicorn server:app --reload`
-7. Server is now live with your data
+8. Server is now live with your data
 
 ###Contributing
 
