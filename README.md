@@ -44,10 +44,10 @@ System needs to have Python 3.10 installed.
 
 ## Contributing
 
-We welcome contributions to enhance the capabilities of Docs2Answer. Check out our Contributing.md guide to get started.
+We welcome contributions to enhance the capabilities of Docs2Answer. Check out our [CONTRIBUTING.md](CONTRIBUTING.md) guide to get started.
 
 ## License
 
-DocBot is licensed under the MIT License - see the LICENSE.md file for details.
+DocBot is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 
