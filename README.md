@@ -42,11 +42,11 @@ System needs to have Python 3.10 installed.
    `uvicorn server:app --reload`
 8. Server is now live with your data
 
-###Contributing
+##Contributing
 
 We welcome contributions to enhance the capabilities of Docs2Answer. Check out our Contributing.md guide to get started.
 
-###License
+##License
 
 DocBot is licensed under the MIT License - see the LICENSE.md file for details.
 
