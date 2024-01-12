@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import pipeline
 import torch
 import base64
@@ -11,7 +11,7 @@ from io import StringIO
 import json
 from constants import CHROMA_SETTINGS
 
-checkpoint = "LaMini-T5-738M"
+checkpoint = "mistralai/Mixtral-8x7B-v0.1"
 # tokenizer = AutoTokenizer.from_pretrained("MBZUAI/LaMini-T5-738M")
 # base_model = AutoModelForSeq2SeqLM.from_pretrained(
 #     "MBZUAI/LaMini-T5-738M",
@@ -20,7 +20,7 @@ checkpoint = "LaMini-T5-738M"
 # ) 
 
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-base_model = AutoModelForSeq2SeqLM.from_pretrained(
+base_model = AutoModelForCausalLM.from_pretrained(
     checkpoint,
     torch_dtype=torch.float32,
     device_map='auto'
